@@ -7,7 +7,7 @@ import numpy as np
 import h5py
 import rpy2.robjects as robjects
 
-def raw_from_fast5(path, channels):
+def raw_from_fast5(path, channel, start, end):
     """ read the raw data from a fast5 file.
 
     Args:
