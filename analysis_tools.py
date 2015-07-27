@@ -15,17 +15,18 @@ class KmerAligner():
         returns the set of identical kmers.
     """
 
-    def __init__(self, ref_seq, verbose=False, nmers=5):
+    def __init__(self, ref_seq, verbose=False, nmer=5):
         """
         Args:
             ref_seq: reference nucleotide sequence
             nmers: length of nmers to analyse (max. 5)
         """
-        assert nmers <= 5
+        assert nmer <= 5
+        self.nmer = nmer
         self.ref_seq = ref_seq
         self.verbose = verbose
         self._mk_aligner();
-        self.counters = zip(['nt_identity', "target_skipped", "read_length", "aligned_read_length",  "true_events"], repeat(0));
+        self.counters = dict(zip(['nt_identity', "target_skipped", "read_length", "aligned_read_length",  "true_events"], repeat(0)));
 
         print ("Query Length {0}".format(len(ref_seq)));
 
@@ -88,7 +89,7 @@ class KmerAligner():
         t_beg = alignment.target_begin
         t_end = alignment.target_end_optimal
         len_read = len(alignment.target_sequence)
-        t_diff = len(len_read) - (t_end - t_beg)
+        t_diff = len_read - (t_end - t_beg)
 
         counters["read_length"] = len_read
         counters["aligned_read_length"] = len_read - t_diff
@@ -105,7 +106,7 @@ class KmerAligner():
     def print_event_statistics(self, alignment, counters):
         msg = """
         Start/End Query {0}/{1} Target {2}/{3} Skipped {4}
-        Length {5}/{6} Identity{7}
+        Length {5}/{6} Identity {7:.5f}
         """.format(
             alignment.query_begin,
             alignment.query_end,
@@ -122,10 +123,10 @@ class KmerAligner():
         msg = """
         length of all reads {0}
         length of aligned parts of the reads {1}
-        ratio nucleotides not aligned {2}
-        sequence identity of aligned reads {3}
+        ratio nucleotides not aligned {2:.5f}
+        sequence identity of aligned reads {3:.5f}
         fully correct kmers {4}
-        ratio fully correct kmers {5}
+        ratio fully correct kmers {5:.5f}
         """.format(
             self.counters["read_length"],
             self.counters["aligned_read_length"],
@@ -183,7 +184,6 @@ class KmerAligner():
 
 
         self.counters["true_events"] += len(true_events);
-        self.print_statistics()
 
         return true_events;
 
