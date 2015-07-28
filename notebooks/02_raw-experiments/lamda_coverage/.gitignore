@@ -1,0 +1,6 @@
+*.fasta
+*.fastq
+*.bt2
+*.sam
+*.bam
+*.tmp
