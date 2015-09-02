@@ -10,9 +10,9 @@ Contains helper classes for the analysis in the ipython notebooks.
 
 class KmerAligner():
     """
-        Align a read to a know reference sequence.
-        Performs sequence statistics (s.a. sequence identity) and
-        returns the set of identical kmers.
+    Align a read to a know reference sequence.
+    Performs sequence statistics (s.a. sequence identity) and
+    returns the set of identical kmers.
     """
 
     def __init__(self, ref_seq, verbose=False, nmer=5):
