@@ -9,6 +9,6 @@ argp.add_argument("--foo", '-a', help="foo arg")
 argp.add_argument("--bar", '-b', help="bar arg")
 
 args = argp.parse_args()
-nb = nbwrapper(args, "test2.ipynb")
+nb = nbwrapper(args, "test.ipynb")
 nb.run()
 

@@ -44,7 +44,16 @@ class nbwrapper:
         environ[ENV_NAME] = json.dumps(self._args)
         r = NotebookRunner(self._notebook)
         r.run_notebook()
-        for i, cell in enumerate(r.nb["worksheets"][0]["cells"]):
+        self.print_notebook(r.nb)
+
+    def print_notebook(self, nbnode):
+        """
+        Prints Input and Output of each cell in a notebook
+
+        Args:
+            nbnode: IPython.nbformat.NotebookNode
+        """
+        for i, cell in enumerate(nbnode["worksheets"][0]["cells"]):
             print(">IN [{0}]:".format(i))
             print (cell["input"])
             print()
