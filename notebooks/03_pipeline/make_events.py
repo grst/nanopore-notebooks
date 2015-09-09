@@ -5,7 +5,7 @@ import sys
 sys.path.insert(0, "../../nbwrapper")
 from nbwrapper import Nbwrapper
 import argparse
-
+import os
 
 if __name__ == "__main__":
     argp = argparse.ArgumentParser()
@@ -15,7 +15,8 @@ if __name__ == "__main__":
 
     args =  argp.parse_args()
     print(args)
-    nb = Nbwrapper(args, "make_events.ipynb")
+    path = os.path.dirname(os.path.realpath(__file__))
+    nb = Nbwrapper(args, path + "/make_events.ipynb")
     nb.run()
 
 
