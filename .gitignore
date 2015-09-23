@@ -8,5 +8,8 @@
 *.bai
 *.sam
 *.fastq
+*.log
+*.vcf
+*.needle
 .nfs*
 rik_kernel.json
