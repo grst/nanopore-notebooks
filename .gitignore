@@ -12,4 +12,5 @@
 *.vcf
 *.needle
 .nfs*
+*.stats.*.html
 rik_kernel.json
