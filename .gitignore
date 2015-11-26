@@ -1,5 +1,6 @@
 .ipynb_checkpoints
 *.pickle
+*.marshal
 *.txt.gz
 *.fasta.*
 *.fa
