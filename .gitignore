@@ -16,3 +16,5 @@
 .idea
 *.stats.*.html
 rik_kernel.json
+*.npy
+*.np
